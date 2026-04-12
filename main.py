@@ -10,9 +10,10 @@ from phase3_modules.entropy_analyzer       import analyze_directory
 from phase3_modules.registry_inspector     import inspect_registry
 from phase3_modules.process_monitor        import scan_processes
 from phase4_advanced.correlation_engine    import run_correlation
+from phase4_advanced.yara_scanner          import run_yara_scan
 from phase4_advanced.mitre_mapper          import map_findings_to_mitre
 from phase5_timeline.timeline_builder      import build_timeline
-from phase6_reports.report_generator       import generate_report
+from phase6_reports.enhanced_report_generator       import generate_enhanced_report
 
 def banner():
     print(f"""
@@ -47,13 +48,14 @@ def main():
         'vssadmin_detected': True, 'shadow_copy_deletion': True,
         'suspicious_registry': True
     }
+    run_yara_scan()
     map_findings_to_mitre(all_findings)
 
     print(f"\n{Fore.YELLOW}[PHASE 5] Reconstructing attack timeline...")
     build_timeline()
 
     print(f"\n{Fore.YELLOW}[PHASE 6] Generating forensic report...")
-    report = generate_report()
+    report = generate_enhanced_report()
     print(f"\n{Fore.GREEN}✅ All phases complete! Report: {report}")
 
 if __name__ == '__main__':

@@ -1,0 +1,72 @@
+[
+  {
+    "hive": "HKCU",
+    "key": "Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+    "name": "OneDrive",
+    "value": "\"C:\\Users\\Dell\\AppData\\Local\\Microsoft\\OneDrive\\OneDrive.exe\" /background",
+    "suspicious": false
+  },
+  {
+    "hive": "HKCU",
+    "key": "Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+    "name": "Firefox Browser",
+    "value": "C:\\Firefox\\X-Firefox.exe",
+    "suspicious": false
+  },
+  {
+    "hive": "HKCU",
+    "key": "Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+    "name": "Opera Stable",
+    "value": "C:\\Users\\Dell\\AppData\\Local\\Programs\\Opera\\opera.exe",
+    "suspicious": false
+  },
+  {
+    "hive": "HKCU",
+    "key": "Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+    "name": "Spotify",
+    "value": "C:\\Users\\Dell\\AppData\\Roaming\\Spotify\\Spotify.exe --autostart --minimized",
+    "suspicious": true
+  },
+  {
+    "hive": "HKCU",
+    "key": "Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+    "name": "CometUpdaterTaskUser145.2.7632.4583",
+    "value": "\"C:\\Users\\Dell\\AppData\\Local\\Perplexity\\CometUpdater\\145.2.7632.4583\\updater.exe\" --wake",
+    "suspicious": false
+  },
+  {
+    "hive": "HKCU",
+    "key": "Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+    "name": "MicrosoftEdgeAutoLaunch_B5BC174A7B4ABF98EC6D64B02610726A",
+    "value": "\"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe\" --win-session-start",
+    "suspicious": false
+  },
+  {
+    "hive": "HKLM",
+    "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
+    "name": "SecurityHealth",
+    "value": "%windir%\\system32\\SecurityHealthSystray.exe",
+    "suspicious": false
+  },
+  {
+    "hive": "HKCU",
+    "key": "Software\\RansomwareForensicTest\\Persistence",
+    "name": "WindowsUpdate",
+    "value": "C:\\Windows\\Temp\\svchost32.exe --silent",
+    "suspicious": true
+  },
+  {
+    "hive": "HKCU",
+    "key": "Software\\RansomwareForensicTest\\Persistence",
+    "name": "AdobeSync",
+    "value": "C:\\Users\\Public\\adobe_helper.exe",
+    "suspicious": true
+  },
+  {
+    "hive": "HKCU",
+    "key": "Software\\RansomwareForensicTest\\Persistence",
+    "name": "MicrosoftEdge",
+    "value": "C:\\ProgramData\\edge_update.exe /autostart",
+    "suspicious": true
+  }
+]

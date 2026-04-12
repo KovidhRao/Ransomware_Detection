@@ -1,7 +1,7 @@
 import os, random, string
 from pathlib import Path
 
-ARTIFACTS_DIR = r'C:\ransomware_forensic\artifacts'
+ARTIFACTS_DIR = r'C:\Users\Dell\Desktop\ransomware_forensi\artifacts'
 
 # Fake ransomware extensions used by real families
 RANSOM_EXTENSIONS = ['.locked', '.wncry', '.enc', '.crypto', '.crypt']

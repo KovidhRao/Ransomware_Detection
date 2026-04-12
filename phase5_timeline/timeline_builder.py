@@ -16,7 +16,7 @@ def load_all_artifacts() -> list:
 
     # Load event logs
     try:
-        with open('artifacts/simulated_event_logs.json') as f:
+        with open(r'C:\Users\Dell\Desktop\ransomware_forensi\artifacts/simulated_event_logs.json') as f:
             for e in json.load(f):
                 events.append({
                     'time': e['time'], 'source': 'Windows Event Log',
@@ -29,7 +29,7 @@ def load_all_artifacts() -> list:
 
     # Load file scan results
     try:
-        with open('reports/file_scan_results.json') as f:
+        with open(r'C:\Users\Dell\Desktop\ransomware_forensi\reports/file_scan_results.json') as f:
             data = json.load(f)
             for ef in data.get('encrypted_files', []):
                 events.append({
@@ -41,7 +41,7 @@ def load_all_artifacts() -> list:
 
     # Load registry findings
     try:
-        with open('artifacts/registry_artifacts.json') as f:
+        with open(r'C:\Users\Dell\Desktop\ransomware_forensi\artifacts/registry_artifacts.json') as f:
             for reg in json.load(f):
                 events.append({
                     'time': reg.get('timestamp', datetime.now().isoformat()),
@@ -77,7 +77,7 @@ def build_timeline():
         print(f"  {color}◆ [{ts}] [{phase:<16}] {ev['description']}{flag}")
         print(f"  {Fore.WHITE+connector}  Source: {ev['source']}\n")
 
-    with open('reports/attack_timeline.json', 'w') as f:
+    with open(r'C:\Users\Dell\Desktop\ransomware_forensi\reports/attack_timeline.json', 'w') as f:
         json.dump(events, f, indent=2)
     print(f"{Fore.GREEN}[✓] Timeline saved to reports/attack_timeline.json")
     return events

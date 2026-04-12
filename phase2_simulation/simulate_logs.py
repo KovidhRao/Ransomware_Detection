@@ -23,7 +23,7 @@ def generate_event_logs():
         {'time': (base_time + timedelta(minutes=22)).isoformat(), 'event_id': 4663, 'desc': 'File created: README_DECRYPT.txt in multiple directories', 'user': 'victim_user', 'suspicious': True},
     ]
 
-    with open('artifacts/simulated_event_logs.json', 'w') as f:
+    with open(r'C:\Users\Dell\Desktop\ransomware_forensi\artifacts/simulated_event_logs.json', 'w') as f:
         json.dump(events, f, indent=2)
     print(f"[✓] Generated {len(events)} simulated event log entries")
     return events

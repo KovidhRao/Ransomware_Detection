@@ -67,7 +67,7 @@ def run_correlation():
 
     result = {'score': total_score, 'triggered': triggered,
               'alert': total_score >= ALERT_THRESHOLD}
-    with open('reports/correlation_result.json', 'w') as f:
+    with open(r'C:\Users\Dell\Desktop\ransomware_forensi\reports/correlation_result.json', 'w') as f:
         json.dump(result, f, indent=2)
     return result
 

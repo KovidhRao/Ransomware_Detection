@@ -62,7 +62,7 @@ def map_findings_to_mitre(all_findings: dict) -> list:
             mapped.append({'id': tech_id, **tech, 'detected': True})
 
     print(f"\n{Fore.YELLOW}[*] {len(mapped)} MITRE techniques detected")
-    with open('reports/mitre_mapping.json', 'w') as f:
+    with open(r'C:\Users\Dell\Desktop\ransomware_forensi\reports/mitre_mapping.json', 'w') as f:
         json.dump(mapped, f, indent=2)
     return mapped
 

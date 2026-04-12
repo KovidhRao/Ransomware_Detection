@@ -50,4 +50,4 @@ def analyze_directory(path):
     return results
 
 if __name__ == '__main__':
-    analyze_directory(r'C:\ransomware_forensic\artifacts')
+    analyze_directory(r'C:\Users\Dell\Desktop\ransomware_forensi\artifacts')

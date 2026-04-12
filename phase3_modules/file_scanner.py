@@ -57,4 +57,4 @@ def scan_directory(scan_path):
 
 if __name__ == '__main__':
     os.makedirs('reports', exist_ok=True)
-    scan_directory(r'C:\ransomware_forensic\artifacts')
+    scan_directory(r'C:\Users\Dell\Desktop\ransomware_forensi\artifacts')

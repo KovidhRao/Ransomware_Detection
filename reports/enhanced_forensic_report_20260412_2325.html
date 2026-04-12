@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<title>Forensic Report — RFC-20260412-2325</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Inter:wght@400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0f;color:#e2e8f0;font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;}
+.page{max-width:900px;margin:0 auto;padding:40px 32px;}
+.cover{border:1px solid #1e2030;border-radius:16px;padding:48px;margin-bottom:40px;background:#0f1018;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#ef4444,#818cf8);}
+.cover-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#4a5568;margin-bottom:12px;}
+.cover-title{font-size:28px;font-weight:700;margin-bottom:8px;}
+.cover-meta{color:#64748b;font-size:13px;display:flex;flex-direction:column;gap:4px;margin-top:20px;}
+.sev-badge{display:inline-block;padding:6px 18px;border-radius:6px;font-weight:700;font-size:13px;font-family:'IBM Plex Mono',monospace;letter-spacing:.05em;background:#ef444422;color:#ef4444;border:1px solid #ef444444;margin-top:16px;}
+h2{font-size:16px;font-weight:700;color:#38bdf8;margin:36px 0 12px;padding-bottom:8px;border-bottom:1px solid #1e2030;display:flex;align-items:center;gap:10px;}
+h2 .num{font-family:'IBM Plex Mono',monospace;font-size:10px;background:#1e2030;padding:3px 8px;border-radius:4px;color:#64748b;}
+.score-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0;}
+.sc{background:#0f1018;border:1px solid #1e2030;border-radius:10px;padding:16px;}
+.sc-label{font-size:11px;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;color:#4a5568;margin-bottom:6px;}
+.sc-val{font-size:24px;font-weight:700;}
+.score-bar-wrap{height:8px;background:#1e2030;border-radius:4px;margin:12px 0;overflow:hidden;}
+.score-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#ef4444,#818cf8);}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px;}
+th{background:#0f1018;color:#64748b;font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.05em;padding:9px 12px;text-align:left;border-bottom:1px solid #1e2030;}
+td{padding:9px 12px;border-bottom:1px solid #0f1520;vertical-align:top;}
+tr:hover td{background:#0f1220;}
+.ebar-wrap{display:flex;align-items:center;gap:10px;}
+.ebar{height:8px;border-radius:4px;min-width:4px;}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:10px;}
+.b-r{background:#ef444420;color:#ef4444;border:1px solid #ef444430;}
+.b-g{background:#22c55e20;color:#22c55e;border:1px solid #22c55e30;}
+.b-b{background:#38bdf820;color:#38bdf8;border:1px solid #38bdf830;}
+.b-p{background:#818cf820;color:#818cf8;border:1px solid #818cf830;}
+.tl-item{display:flex;gap:14px;margin-bottom:12px;}
+.tl-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.tl-line{display:flex;flex-direction:column;gap:2px;}
+.tl-time{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#64748b;}
+.tl-desc{font-size:13px;}
+.ioc-box{background:#0d0d14;border:1px solid #1e2030;border-radius:8px;padding:14px;margin:8px 0;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#a5d6ff;word-break:break-all;}
+.reco-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #0f1520;}
+.reco-num{width:28px;height:28px;border-radius:7px;background:#0f1018;border:1px solid #1e2030;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#38bdf8;flex-shrink:0;}
+.exec-box{background:#0f1018;border-left:3px solid #38bdf8;padding:16px 20px;border-radius:0 8px 8px 0;margin:12px 0;font-size:14px;color:#94a3b8;line-height:1.8;}
+code{font-family:'IBM Plex Mono',monospace;font-size:11px;background:#1e2030;padding:2px 6px;border-radius:3px;color:#a5d6ff;}
+.footer{margin-top:48px;padding-top:20px;border-top:1px solid #1e2030;font-size:12px;color:#4a5568;font-family:'IBM Plex Mono',monospace;display:flex;justify-content:space-between;}
+</style></head>
+<body><div class="page">
+
+<div class="cover">
+  <div class="cover-label">Digital Forensic Investigation Report</div>
+  <div class="cover-title">Ransomware Post-Incident Analysis</div>
+  <div class="sev-badge">CRITICAL SEVERITY</div>
+  <div class="cover-meta">
+    <span>Case ID: <strong style="color:#e2e8f0">RFC-20260412-2325</strong></span>
+    <span>Analyst: <strong style="color:#e2e8f0">Forensic Investigation Framework v1.0</strong></span>
+    <span>Date: <strong style="color:#e2e8f0">12 April 2026, 23:25:36</strong></span>
+    <span>Classification: <strong style="color:#e2e8f0">ACADEMIC — SIMULATED ENVIRONMENT</strong></span>
+  </div>
+</div>
+
+<h2><span class="num">01</span> Executive Summary</h2>
+<div class="exec-box">
+Forensic analysis identified strong indicators of a ransomware attack. 
+A total of <strong style="color:#f87171">9 files</strong> were found with ransomware-associated extensions.
+Risk score is <strong style="color:#ef4444">102/100 (CRITICAL)</strong>.
+</div>
+
+<h2><span class="num">02</span> Risk Scorecard</h2>
+<div class="score-row">
+  <div class="sc"><div class="sc-label">Overall Score</div><div class="sc-val" style="color:#ef4444">102/100</div></div>
+  <div class="sc"><div class="sc-label">Encrypted Files</div><div class="sc-val" style="color:#f87171">9</div></div>
+  <div class="sc"><div class="sc-label">MITRE Techniques</div><div class="sc-val" style="color:#818cf8">3</div></div>
+  <div class="sc"><div class="sc-label">Timeline Events</div><div class="sc-val" style="color:#38bdf8">20</div></div>
+</div>
+<div class="score-bar-wrap"><div class="score-bar-fill" style="width:102%"></div></div>
+
+<h2><span class="num">03</span> File System Evidence</h2>
+<table><thead><tr><th>Filename</th><th>Ext</th><th>Family</th><th>Entropy</th><th>Size</th></tr></thead><tbody>
+<tr>
+  <td><code>database_backup.sql.enc</code></td>
+  <td><span class="badge b-r">.enc</span></td>
+  <td>Generic</td>
+  <td>3.961</td>
+  <td>9000 B</td>
+</tr><tr>
+  <td><code>employee_data.xlsx.enc</code></td>
+  <td><span class="badge b-r">.enc</span></td>
+  <td>Generic</td>
+  <td>7.742</td>
+  <td>804 B</td>
+</tr><tr>
+  <td><code>family_photo.jpg.locked</code></td>
+  <td><span class="badge b-r">.locked</span></td>
+  <td>Generic</td>
+  <td>7.937</td>
+  <td>2804 B</td>
+</tr><tr>
+  <td><code>invoice_march.pdf.enc</code></td>
+  <td><span class="badge b-r">.enc</span></td>
+  <td>Generic</td>
+  <td>3.784</td>
+  <td>3750 B</td>
+</tr><tr>
+  <td><code>photo_001.jpg.enc</code></td>
+  <td><span class="badge b-r">.enc</span></td>
+  <td>Generic</td>
+  <td>7.809</td>
+  <td>1028 B</td>
+</tr><tr>
+  <td><code>presentation.pptx.enc</code></td>
+  <td><span class="badge b-r">.enc</span></td>
+  <td>Generic</td>
+  <td>7.548</td>
+  <td>516 B</td>
+</tr><tr>
+  <td><code>project_database.sql.locked</code></td>
+  <td><span class="badge b-r">.locked</span></td>
+  <td>Generic</td>
+  <td>7.986</td>
+  <td>14400 B</td>
+</tr><tr>
+  <td><code>report_q1.docx.enc</code></td>
+  <td><span class="badge b-r">.enc</span></td>
+  <td>Generic</td>
+  <td>3.840</td>
+  <td>7000 B</td>
+</tr><tr>
+  <td><code>student_thesis.docx.locked</code></td>
+  <td><span class="badge b-r">.locked</span></td>
+  <td>Generic</td>
+  <td>7.987</td>
+  <td>12300 B</td>
+</tr></tbody></table>
+
+<h2><span class="num">04</span> MITRE ATT&CK Mapping</h2>
+<table><thead><tr><th>Technique ID</th><th>Name</th><th>Tactic</th></tr></thead><tbody>
+<tr>
+  <td><span class="badge b-r">T1486</span></td>
+  <td><strong>Data Encrypted for Impact</strong></td>
+  <td><span class="badge b-p">Impact</span></td>
+</tr><tr>
+  <td><span class="badge b-r">T1490</span></td>
+  <td><strong>Inhibit System Recovery</strong></td>
+  <td><span class="badge b-p">Impact</span></td>
+</tr><tr>
+  <td><span class="badge b-r">T1547</span></td>
+  <td><strong>Boot/Logon Autostart Execution</strong></td>
+  <td><span class="badge b-p">Persistence</span></td>
+</tr></tbody></table>
+
+<h2><span class="num">05</span> attack Timeline</h2>
+<div class="tl-item">
+  <div class="tl-dot" style="background:#22c55e"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T20:25:10 | Windows Event Log</div>
+    <div class="tl-desc">Successful Logon</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#22c55e"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T20:30:10 | Windows Event Log</div>
+    <div class="tl-desc">Process Created: notepad.exe</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#ef4444"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T20:37:10 | Windows Event Log</div>
+    <div class="tl-desc">Process Created: WINWORD.EXE spawned cmd.exe</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#ef4444"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T20:38:10 | Windows Event Log</div>
+    <div class="tl-desc">Process Created: ransom_payload.exe</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#ef4444"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T20:39:10 | Windows Event Log</div>
+    <div class="tl-desc">Process Created: vssadmin.exe delete shadows /all /quiet</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#ef4444"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T20:40:10 | Windows Event Log</div>
+    <div class="tl-desc">Registry value modified: HKCU\Run\WindowsUpdate</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#ef4444"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T20:41:10 | Windows Event Log</div>
+    <div class="tl-desc">File access: C:\Users\victim_user\Documents (mass read)</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#ef4444"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T20:47:10 | Windows Event Log</div>
+    <div class="tl-desc">File created: README_DECRYPT.txt in multiple directories</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#ef4444"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T23:24:56 | File System</div>
+    <div class="tl-desc">File encrypted: student_thesis.docx.locked (Generic)</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#ef4444"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T23:24:56 | File System</div>
+    <div class="tl-desc">File encrypted: project_database.sql.locked (Generic)</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#ef4444"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T23:24:56 | File System</div>
+    <div class="tl-desc">File encrypted: family_photo.jpg.locked (Generic)</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#ef4444"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T23:25:09 | File System</div>
+    <div class="tl-desc">File encrypted: report_q1.docx.enc (Generic)</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#ef4444"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T23:25:09 | File System</div>
+    <div class="tl-desc">File encrypted: database_backup.sql.enc (Generic)</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#ef4444"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T23:25:09 | File System</div>
+    <div class="tl-desc">File encrypted: photo_001.jpg.enc (Generic)</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#ef4444"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T23:25:09 | File System</div>
+    <div class="tl-desc">File encrypted: presentation.pptx.enc (Generic)</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#ef4444"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T23:25:09 | File System</div>
+    <div class="tl-desc">File encrypted: invoice_march.pdf.enc (Generic)</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#ef4444"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T23:25:10 | File System</div>
+    <div class="tl-desc">File encrypted: employee_data.xlsx.enc (Generic)</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#ef4444"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T23:25:10 | Registry</div>
+    <div class="tl-desc">Persistence key written: WindowsUpdate → C:\Windows\Temp\svchost32.exe --silent...</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#ef4444"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T23:25:10 | Registry</div>
+    <div class="tl-desc">Persistence key written: AdobeSync → C:\Users\Public\adobe_helper.exe...</div>
+  </div>
+</div><div class="tl-item">
+  <div class="tl-dot" style="background:#ef4444"></div>
+  <div class="tl-line">
+    <div class="tl-time">2026-04-12T23:25:10 | Registry</div>
+    <div class="tl-desc">Persistence key written: MicrosoftEdge → C:\ProgramData\edge_update.exe /autostart...</div>
+  </div>
+</div>
+
+<div class="footer">
+  <span>Case: RFC-20260412-2325</span>
+  <span>Generated: 12 April 2026, 23:25:36</span>
+</div>
+</div></body></html>
